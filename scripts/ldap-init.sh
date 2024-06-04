@@ -11,8 +11,8 @@ if sudo ${DOCKER} exec -i $cid1 test -f /etc/os-release; then  # Check for ubi i
   # Check for specific UBI version (optional)
   if sudo ${DOCKER} exec -i $cid1 grep 'VERSION_ID="7"' /etc/os-release; then
     # Specific UBI 7 instructions (if needed)
-    sudo ${DOCKER} exec -i $cid1 /usr/bin/ldapadd -Y EXTERNAL -H ldapi:// < scripts/slapd-config-mdb.ldif
-    sudo ${DOCKER} exec -i $cid2 /usr/bin/ldapadd -Y EXTERNAL -H ldapi:// < scripts/slapd-config-mdb.ldif
+    sudo ${DOCKER} exec -i $cid1 /usr/bin/ldapadd -Y EXTERNAL -H ldapi:// < scripts/slapd-config/ldif
+    sudo ${DOCKER} exec -i $cid2 /usr/bin/ldapadd -Y EXTERNAL -H ldapi:// < scripts/slapd-config.ldif
   else
     # Generic UBI instructions
     sudo ${DOCKER} exec -i $cid1 /usr/bin/ldapadd -Y EXTERNAL -H ldapi:// < scripts/slapd-config-mdb.ldif  # Assuming same configuration file
